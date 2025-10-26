@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class = 'pageAddPostButton'>
+            <div><button class="buttonSimpForm" type="submit">Добавить статью</button></div>
+            <div><a class="buttonSimp" href="{% url 'index' %}">На главную</a></div>
+        </div>
+    </form>
+
+{% endblock %}

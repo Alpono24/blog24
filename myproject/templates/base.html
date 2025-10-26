@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Блог{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<header>
+    <div><strong><a class="buttonSimp"href="{% url 'index' %}">Блог</a></strong></div>
+    <div class="baseMenu">
+        <div><a class="buttonSimpForm" href="{% url 'add_post' %}">Добавить статью</a></div>
+
+                    {% if user.is_authenticated %}
+                        <div>Привет, {{ user.username }}!</div>
+                                <form method="post" action="{% url 'logout' %}">
+                                    {% csrf_token %}
+                                    <button class="buttonSimpForm" type="submit">Выйти</button>
+                                </form>
+                        {% else %}
+                            <div><a class="buttonSimp" href="{% url 'login' %}">Войти</a></div>
+                            <div><a class="buttonSimp" href="{% url 'register' %}">Регистрация</a></div>
+
+                    {% endif %}
+
+    </div>
+</header>
+
+
+<main>
+
+<div class="wrapper">
+    {% block content %}
+    <!-- Здесь дочерние шаблоны вставят свой HTML -->
+    {% endblock %}
+</div>
+
+</main>
+
+<footer class=footer>
+    <div class="footerText">
+        <small>2025 Учебный проект Django Blog: Alpono24</small>
+    </div>
+</footer>
+
+</body>
+</html>

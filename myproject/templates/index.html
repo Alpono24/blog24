@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+<!--{% load static %}-->
+{% block content %}
+
+    <h1>{{ title }}</h1>
+
+    <div>
+        <strong>Категории:</strong>
+        <a class="buttonSimp" href="{% url 'index' %}" class="xxx">Все</a>
+        {% for category in categories %}
+            <a class="buttonSimp" href="?category={{ category.id }}" class="xxx">
+                {{ category.name }}
+            </a>
+        {% endfor %}
+    </div>
+
+
+
+    {% for post in posts %}
+    <div class="post">
+            <h2 class="postTitle">{{post.title}}</h2>
+            <div  class="postBody">{{post.body}}<div>
+
+            {% if post.image %}
+            <div class='postImgDiv'><img class='postImgDivP' src="{{ post.image.url }}" alt="{{ post.name }}"></div>
+            {% endif %}
+
+            <div class="postInfo">Автор публикации: {{post.author}}</div>
+            <div class="postInfo">Категория: {{post.category}}</div>
+            <div class="postInfo">Дата публикации: {{post.created_at|date:"d.m.y H:i"}}</div>
+
+            <div class="postInfoMenu">
+                {% csrf_token %}
+                <p><a class="buttonSimp" href="{% url 'post_detail' post.id %}">Подробнее</a></p>
+<!--                <p><a class="buttonSimp" href="{% url 'edit_post' post.id %}">Редактировать пост</a></p>-->
+<!--                <p><a class="buttonSimp" href="{% url 'delete_post' post.id %}">Удалить пост</a></p>-->
+            </div>
+    </div>
+    {% endfor %}
+
+{% endblock %}

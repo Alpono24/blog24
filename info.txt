@@ -1,0 +1,9 @@
+# def login(request):
+#     title = 'Ввод логина и пароля'
+#     return render(request,'login.html', {'title': title})
+
+
+def register(request):
+    title = 'Регистрация нового пользователя'
+
+    return render(request,'register.html', {'title': title})

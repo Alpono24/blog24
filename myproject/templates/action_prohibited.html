@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>{{ title }}</h1>
+
+    <h1>Действие запрещено.</h1>
+    <div>Вы не можете производить это действие!</div>
+    <div><a class="buttonSimp"  href="{% url 'index' %}">На главную</a></div>
+{% endblock %}
