@@ -50,6 +50,8 @@ INSTALLED_APPS = [
     # 'myapp.apps.MyappConfig',
 ]
 
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -72,6 +74,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
             ],
         },
     },
@@ -139,6 +142,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / "static",]
+STATIC_ROOT = BASE_DIR / 'static_root'
 
 
 
@@ -177,8 +181,8 @@ CACHES = {
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.mail.ru'                 # SMTP-сервер Mail.Ru
 # EMAIL_HOST = 'smtp.gmail.com' # Сервер SMTP Google Mail
-EMAIL_PORT = 465                  # Порт для SSL/TLS соединения 587 465
-# EMAIL_USE_TLS = True                   # Использовать TLS шифрование
+EMAIL_PORT = 465   # Порт для SSL/TLS соединения 587 465
+# EMAIL_USE_TLS = True Использовать TLS шифрование
 EMAIL_USE_SSL = True #для SSL
 
 

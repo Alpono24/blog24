@@ -1,20 +1,29 @@
 <!DOCTYPE html>
-{% load static %}
+
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Блог{% endblock %}</title>
+    {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
 
 <header>
-    <div><strong><a class="buttonSimp"href="{% url 'index' %}">Блог</a></strong></div>
     <div class="baseMenu">
-        <div><a class="buttonSimpForm" href="{% url 'add_post' %}">Добавить статью</a></div>
+        <div><img src="{% static 'svg/christmas-tree-svgrepo-com.svg' %}" style="width: 45px;" alt="Christmas tree"></div>
+        <div><a class="buttonSimp" href="{% url 'posts' %}">Статьи</a></div>
+        <div><a class="buttonSimp" href="{% url 'products' %}">Магазин</a></div>
+        <div><a class="buttonSimp" href="{% url 'music' %}">Музыка</a></div>
+        <div><img src="{% static 'svg/christmas-tree-svgrepo-com.svg' %}" style="width: 45px;" alt="Christmas tree"></div>
+    </div>
 
+
+    <div class="baseMenu">
+        <div><img src="{% static 'svg/christmas-tree-svgrepo-com.svg' %}" style="width: 45px;" alt="Christmas tree"></div>
                     {% if user.is_authenticated %}
-                        <div>Привет, {{ user.username }}!</div>
+                        <div><pre>Вы зарегистрированы как:
+              <b>{{ user.username }}  </pre></b></div>
                                 <form method="post" action="{% url 'logout' %}">
                                     {% csrf_token %}
                                     <button class="buttonSimpForm" type="submit">Выйти</button>
@@ -24,9 +33,11 @@
                             <div><a class="buttonSimp" href="{% url 'register' %}">Регистрация</a></div>
 
                     {% endif %}
-
+        <div><img src="{% static 'svg/christmas-tree-svgrepo-com.svg' %}" style="width: 45px;" alt="Christmas tree"></div>
     </div>
 </header>
+
+
 
 
 <main>
@@ -39,6 +50,8 @@
 
 </main>
 
+
+
 <footer class=footer>
     <div class="footerText">
         <small>2025 Учебный проект Django Blog: Alpono24</small>
@@ -46,4 +59,7 @@
 </footer>
 
 </body>
+
 </html>
+
+
